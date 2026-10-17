@@ -1,0 +1,11 @@
+<div class="popup-overlay">
+  <div class="popup-content">
+    <h2>{{ data.title }}</h2>
+    <ul>
+      <li *ngFor="let message of data.messages">{{ message }}</li>
+    </ul>
+    <div class="popup-actions">
+      <button (click)="closePopup()">Close</button>
+    </div>
+  </div>
+</div>

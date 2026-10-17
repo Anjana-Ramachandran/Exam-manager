@@ -1,0 +1,73 @@
+<div class="create-account-container">
+  <mat-card class="create-account-card">
+    <h2>Create Account</h2>
+    <form *ngIf="!isVerified" (ngSubmit)="sendOtp()">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>User ID</mat-label>
+        <input matInput placeholder="Enter your User ID" [(ngModel)]="userId" name="userId" required />
+        <mat-error *ngIf="!userId">User ID is required</mat-error>
+      </mat-form-field>
+    
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Email ID</mat-label>
+        <input 
+          matInput 
+          placeholder="Enter your Email ID" 
+          [(ngModel)]="email" 
+          name="email" 
+          required 
+          (ngModelChange)="validateEmail()"
+          [ngClass]="{'invalid-input': email && !isEmailValid}"
+        />
+        <div 
+          *ngIf="email && !isEmailValid" 
+          class="error-message"
+        >
+          Please enter a valid email address
+        </div>
+      </mat-form-field>
+      
+      
+    
+      <button mat-raised-button style="color: white; background-color: rgb(157, 73, 36);" class="full-width" type="submit">
+        Send OTP
+      </button>
+    
+      <mat-form-field style="margin-top: 20px;" *ngIf="isOtpSent" appearance="outline" class="full-width">
+        <mat-label>Enter OTP</mat-label>
+        <input matInput placeholder="Enter OTP" [(ngModel)]="otp" name="otp" required />
+        <mat-error *ngIf="!otp">OTP is required</mat-error>
+      </mat-form-field>
+    
+      <!-- Updated button with type="button" -->
+      <button *ngIf="isOtpSent" mat-raised-button style="color: white; background-color: rgb(157, 73, 36);" class="full-width" type="button" (click)="verifyOtp()">
+        Verify OTP
+      </button>
+    </form>
+    
+
+    <form *ngIf="isVerified" (ngSubmit)="createAccount()">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>User Id</mat-label>
+        <input matInput placeholder="Enter your User Id" [(ngModel)]="userId" name="userId" required />
+        <mat-error *ngIf="!userId">User Id is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Password</mat-label>
+        <input matInput placeholder="Enter your Password" [(ngModel)]="password" name="password" type="password" required />
+        <mat-error *ngIf="!password">Password is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Retype Password</mat-label>
+        <input matInput placeholder="Retype your Password" [(ngModel)]="confirmPassword" name="confirmPassword" type="password" required />
+        <mat-error *ngIf="password !== confirmPassword">Passwords must match</mat-error>
+      </mat-form-field>
+
+      <button mat-raised-button style="color: white; background-color: rgb(157, 73, 36)" class="full-width" type="submit">
+        Create Account
+      </button>
+    </form>
+  </mat-card>
+</div>

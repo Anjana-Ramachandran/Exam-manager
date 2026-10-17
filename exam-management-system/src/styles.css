@@ -1,0 +1,82 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Ensure the parent container takes full height */
+/* html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  /* overflow: hidden; */
+/* } */ 
+
+/* Make the main container take the full viewport height */
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+app-header,
+app-footer {
+  flex-shrink: 0;
+}
+
+/* Restrict scrolling to router-outlet */
+router-outlet {
+  flex: 1;
+  overflow-y: auto;
+  display: block; /* Ensure it's treated as a block element */
+}
+
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Success Snackbar Style */
+.snack-success {
+    background-color: #4caf50;
+    color: white;
+    z-index: 1000;
+  }
+  
+  /* Error Snackbar Style */
+  .snack-error {
+    background-color: #f44336;
+    color: white;
+  }
+  
+  /* Warning Snackbar Style */
+  .snack-warning {
+    background-color: #ff9800;
+    color: white;
+  }
+
+
+ /* Base styles for snackbar containers */
+.mat-mdc-snack-bar-container {
+  margin-top: 60px !important;
+  margin-right: 10px !important;
+}
+
+/* Success style */
+.mat-mdc-snack-bar-container.snackbar-success {
+  --mdc-snackbar-container-color: #2cc731;
+  --mat-mdc-snack-bar-button-color: #ffffff;
+  --mdc-snackbar-supporting-text-color: #ffffff;
+}
+
+/* Error style */
+.mat-mdc-snack-bar-container.snackbar-error {
+  --mdc-snackbar-container-color: #f44336;
+  --mat-mdc-snack-bar-button-color: #ffffff;
+  --mdc-snackbar-supporting-text-color: #ffffff;
+}
+
+/* Warning style */
+.mat-mdc-snack-bar-container.snackbar-warning {
+  --mdc-snackbar-container-color: #ff9800;
+  --mat-mdc-snack-bar-button-color: #ffffff;
+  --mdc-snackbar-supporting-text-color: #ffffff;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,body{
+  background: linear-gradient(-45deg, #f3da77, #f3da77, #f3da77, #f3da77);
+} 

@@ -1,0 +1,160 @@
+/* Apply elevation shadow and rounded corners */
+table.mat-elevation-z8 {
+    width: 80% !important; /* Set a fixed width to shorten the table */
+    border-collapse: collapse !important; /* Ensure borders collapse into single lines */
+    border-radius: 8px !important;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1) !important; /* Shadow for elevation */
+    margin: 0 auto !important; /* Center the table */
+    overflow: hidden !important; /* Prevent content from overflowing */
+}
+
+/* Styling for header cells */
+table.mat-elevation-z8 .mat-header-cell {
+    padding: 10px !important; /* Adequate padding for header */
+    background-color: #4CAF50 !important; /* Green background for header */
+    color: white !important;
+    text-align: center !important;
+    font-weight: bold !important;
+    border-right: 2px solid #ddd !important; /* Vertical line between header cells */
+    border-bottom: 2px solid #ddd !important; /* Horizontal line below header */
+}
+
+/* Styling for table data cells */
+table.mat-elevation-z8 .mat-cell {
+    padding: 10px !important; /* Adequate padding for cells */
+    text-align: center !important;
+    font-size: 14px !important;
+    border-right: 2px solid #ddd !important; /* Vertical line between data columns */
+    border-bottom: 1px solid #ddd !important; /* Horizontal line between rows */
+}
+
+/* Remove right border for the last column */
+table.mat-elevation-z8 .mat-row .mat-cell:last-child,
+table.mat-elevation-z8 .mat-header-row .mat-header-cell:last-child {
+    border-right: none !important;
+}
+
+/* Remove bottom border for the last row */
+table.mat-elevation-z8 .mat-row:last-child .mat-cell {
+    border-bottom: none !important;
+}
+
+/* Hover effect for rows */
+table.mat-elevation-z8 .mat-row:hover {
+    background-color: #f1f1f1 !important;
+}
+
+/* Alternating row colors */
+table.mat-elevation-z8 .mat-row:nth-child(even) {
+    background-color: #f9f9f9 !important;
+}
+
+/* Header title styling */
+h2 {
+    font-size: 30px !important;
+    color:#be4934 !important;
+    margin-bottom: 15px !important;
+    text-align: center !important;
+}
+
+/* Filter input styling */
+input[matInput] {
+    width: 20% !important;
+    margin-bottom: 39px !important;
+    padding: 1px !important;
+    font-size: 12px !important;
+    border: 1px solid #ccc !important;
+    border-radius: 6px !important;
+}
+
+input[matInput]:focus {
+    outline: none !important;
+    border-color: #3f51b5 !important;
+    box-shadow: 0 0 8px rgba(63, 81, 181, 0.2) !important;
+}
+
+/* Table styling */
+.mat-elevation-z8 {
+    margin-top: 20px !important;
+}
+
+.mat-header-cell {
+    background-color: #3f51b5 !important;
+    color: white !important;
+    font-weight: bold !important;
+}
+
+.mat-cell {
+    padding: 10px !important;
+    border-bottom: 1px solid #f1f1f1 !important;
+}
+
+.mat-row {
+    transition: background-color 0.3s !important;
+}
+
+.mat-row:hover {
+    background-color: #f5f5f5 !important;
+}
+
+
+
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  
+    th {
+      background:#be4934; /* Professional blue shade */
+      color: white;
+      font-weight: bold;
+      text-align: left;
+      padding: 12px;
+      font-size: 14px;
+      text-transform: uppercase;
+    }
+  
+    td {
+      padding: 12px;
+      font-size: 14px;
+      color: #333;
+    }
+  
+    tr:nth-child(even) {
+      background: #f9f9f9; /* Light grey for alternating rows */
+    }
+  
+    tr:hover {
+      background: #e3f2fd; /* Light blue on hover */
+      transition: background 0.3s ease-in-out;
+    }
+  }
+  
+  /* Container for table */
+  .table-container {
+    margin: 20px 0;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+  }
+  .center {
+    display: flex;
+    justify-content: center;
+  }
+  .background {
+    background-image: url('https://images.pexels.com/photos/4861363/pexels-photo-4861363.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2') !important;
+    height: 120vb !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+    width: 100% !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+  }
+  

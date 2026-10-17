@@ -1,0 +1,264 @@
+<div style="zoom: 0.9;" class="background">
+    <div class="dashboard-title">
+        Dashboard
+    </div>
+
+    <div class="row">
+        <div class="cards-container">
+            <mat-card class="example-card" appearance="outlined">
+                <mat-card-header>
+                    <mat-card-title>Hi {{userName}}</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <p>Role: {{userRole}}</p>
+                </mat-card-content>
+                <mat-card-footer class="example-card-footer">
+                    <mat-chip-set aria-label="Chihuahua traits">
+                    <!-- <mat-chip >Update Profile</mat-chip> -->
+                    <mat-chip *ngIf="userRole !== 'Admin'" (click)="contactAdmin()">Contact Admin</mat-chip>
+                    <mat-chip *ngIf="userRole === 'Admin'"  (click)="openPopup('viewUsers')">View Users</mat-chip>
+                    </mat-chip-set>
+                </mat-card-footer>
+            </mat-card>
+
+            <mat-card class="example-card1" appearance="outlined">
+              <mat-card-header>
+                <mat-card-title>Hi {{userName}}! Find your work here</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <p>Role: {{userRole}}</p>
+              </mat-card-content>
+              <mat-card-footer class="example-card-footer">
+                <mat-chip-set aria-label="Chihuahua traits">
+                <mat-chip *ngIf="userRole !== 'Admin'" (click)="openPopup('feedback')">Add Feedback</mat-chip>
+                  <mat-chip *ngIf="userRole === 'Student'" (click)="openPopup('registerExam')">Register Exam</mat-chip>
+                  <mat-chip *ngIf="userRole !== 'Admin'" (click)="openPopup('help')">Help</mat-chip> 
+                  <mat-chip *ngIf="userRole === 'Admin'" (click)="openPopup('createUsers')">Create Users</mat-chip>
+                  <mat-chip *ngIf="userRole === 'Faculty'" (click)="openPopup('attendance')">Add Attendance</mat-chip>
+                  <mat-chip *ngIf="userRole === 'Admin'" (click)="goToExmMngr()">Schedule Exam</mat-chip>
+                  <mat-chip *ngIf="userRole === 'Admin'" (click)="openPopup('viewFeedback')">View Feedback</mat-chip>
+                </mat-chip-set>
+              </mat-card-footer>
+            </mat-card>
+            
+        </div>
+    </div>
+
+    <div style="margin-left: 10px; margin-top: 10px;display: flex;align-items: center;justify-content: space-between;">
+
+        <p style="font-size: 19px;font-weight: bold;margin-left: 770px;">Recent Exam Details</p>
+
+        <!-- <mat-form-field appearance="outline" style="width: 400px; margin-right: 10px;">
+            <mat-label>Search</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
+        </mat-form-field> -->
+    </div>
+
+    <div *ngIf="userRole === 'Student'" class="table-container mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource2" class="mat-table custom-table">
+    
+        <!-- Exam Date Column -->
+        <ng-container matColumnDef="examDate">
+          <th mat-header-cell *matHeaderCellDef style="width: 150px;">Exam Date</th>
+          <td mat-cell *matCellDef="let element" style="width: 150px;">{{ element.examDate | date: 'MM/ dd/ yyyy' }}</td>
+        </ng-container>
+    
+        <!-- Start Time Column -->
+        <ng-container matColumnDef="startTime">
+          <th mat-header-cell *matHeaderCellDef style="width: 150px;">Start Time</th>
+          <td mat-cell *matCellDef="let element" style="width: 150px;">{{ element.startTime }}</td>
+        </ng-container>
+
+        <!-- End Time Column -->
+        <ng-container matColumnDef="endTime">
+          <th mat-header-cell *matHeaderCellDef style="width: 150px;">End Time</th>
+          <td mat-cell *matCellDef="let element" style="width: 150px;">{{ element.endTime }}</td>
+        </ng-container>
+
+        <!-- subjectCode Column -->
+        <ng-container matColumnDef="subjectCode">
+          <th mat-header-cell *matHeaderCellDef style="width: 150px;">Subject Code</th>
+          <td mat-cell *matCellDef="let element" style="width: 150px;">{{ element.subjectCode }}</td>
+        </ng-container>
+
+        <!-- subjectName Column -->
+        <ng-container matColumnDef="subjectName">
+          <th mat-header-cell *matHeaderCellDef style="width: 150px;">Subject Name</th>
+          <td mat-cell *matCellDef="let element" style="width: 150px;">{{ element.subjectName }}</td>
+        </ng-container>
+
+        <!-- semester Column -->
+        <ng-container matColumnDef="semester">
+          <th mat-header-cell *matHeaderCellDef style="width: 150px;">Semester</th>
+          <td mat-cell *matCellDef="let element" style="width: 150px;">{{ element.semester }}</td>
+        </ng-container>
+
+        <!-- courseId Column -->
+        <ng-container matColumnDef="courseId">
+          <th mat-header-cell *matHeaderCellDef style="width: 150px;">Course Id</th>
+          <td mat-cell *matCellDef="let element" style="width: 150px;">{{ element.courseId }}</td>
+        </ng-container>
+
+        <!-- blockId Column -->
+        <ng-container matColumnDef="blockId">
+          <th mat-header-cell *matHeaderCellDef style="width: 150px;">Block</th>
+          <td mat-cell *matCellDef="let element" style="width: 150px;">{{ element.blockId }}</td>
+        </ng-container>
+
+        <!-- seat Column -->
+        <ng-container matColumnDef="room">
+          <th mat-header-cell *matHeaderCellDef style="width: 150px;">Room</th>
+          <td mat-cell *matCellDef="let element" style="width: 150px;">{{ element.room }}</td>
+        </ng-container>
+
+        <!-- seat Column -->
+        <ng-container matColumnDef="seat">
+          <th mat-header-cell *matHeaderCellDef style="width: 150px;">Seat</th>
+          <td mat-cell *matCellDef="let element" style="width: 150px;">{{ element.seat }}</td>
+        </ng-container>
+  
+    
+        <!-- Header and Rows -->
+        <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+      </table>
+    </div>    
+    <div *ngIf="userRole === 'Admin'" class="table-container mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource" class="mat-table custom-table">
+    
+        <!-- User ID Column -->
+        <ng-container matColumnDef="userId">
+          <th mat-header-cell *matHeaderCellDef style="width: 150px;">User ID</th>
+          <td mat-cell *matCellDef="let element" style="width: 150px;">{{ element.userId }}</td>
+        </ng-container>
+    
+        <!-- User Name Column -->
+        <ng-container matColumnDef="userName">
+          <th mat-header-cell *matHeaderCellDef style="width: 150px;">User Name</th>
+          <td mat-cell *matCellDef="let element" style="width: 150px;">{{ element.userName }}</td>
+        </ng-container>
+    
+        <!-- Subjects Column -->
+        <ng-container matColumnDef="subjects">
+          <th mat-header-cell *matHeaderCellDef style="width: 150px;">Subjects</th>
+          <td mat-cell *matCellDef="let element" style="width: 150px;">
+            <div *ngFor="let subject of element.subjects">
+              Subject Code: {{ subject.subjectCode }}
+            </div>
+          </td>
+        </ng-container>
+    
+        <!-- Semester Column -->
+        <ng-container matColumnDef="semester">
+          <th mat-header-cell *matHeaderCellDef style="width: 150px;">Semester</th>
+          <td mat-cell *matCellDef="let element" style="width: 150px;">
+            <div *ngFor="let subject of element.subjects">
+              Semester: {{ subject.semester }}
+            </div>
+          </td>
+        </ng-container>
+    
+        <!-- Course ID Column -->
+        <ng-container matColumnDef="courseId">
+          <th mat-header-cell *matHeaderCellDef style="width: 150px;">Course ID</th>
+          <td mat-cell *matCellDef="let element" style="width: 150px;">
+            <div *ngFor="let subject of element.subjects">
+              Course ID: {{ subject.courseId }}
+            </div>
+          </td>
+        </ng-container>
+    
+        <!-- Seats Column -->
+        <ng-container matColumnDef="seats">
+          <th mat-header-cell *matHeaderCellDef style="width: 150px;">Seats</th>
+          <td mat-cell *matCellDef="let element" style="width: 150px;">
+            <div class="seats-container">
+              <div *ngFor="let seat of element.seats">
+                Block: {{ seat.blockId }}, Room: {{ seat.room }}, Seat: {{ seat.seat }}
+              </div>
+            </div>
+          </td>
+        </ng-container>
+    
+        <!-- Header and Rows -->
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>    
+    <div *ngIf="userRole === 'Faculty'" class="table-container mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource" class="mat-table custom-table">
+    
+        <!-- User ID Column -->
+        <ng-container matColumnDef="userId">
+          <th mat-header-cell *matHeaderCellDef style="width: 150px;">User ID</th>
+          <td mat-cell *matCellDef="let element" style="width: 150px;">{{ element.userId }}</td>
+        </ng-container>
+    
+        <!-- User Name Column -->
+        <ng-container matColumnDef="userName">
+          <th mat-header-cell *matHeaderCellDef style="width: 150px;">User Name</th>
+          <td mat-cell *matCellDef="let element" style="width: 150px;">{{ element.userName }}</td>
+        </ng-container>
+    
+        <!-- Subjects Column -->
+        <ng-container matColumnDef="subjects">
+          <th mat-header-cell *matHeaderCellDef style="width: 150px;">Subjects</th>
+          <td mat-cell *matCellDef="let element" style="width: 150px;">
+            <div *ngFor="let subject of element.subjects">
+              Subject Code: {{ subject.subjectCode }}
+            </div>
+          </td>
+        </ng-container>
+    
+        <!-- Semester Column -->
+        <ng-container matColumnDef="semester">
+          <th mat-header-cell *matHeaderCellDef style="width: 150px;">Semester</th>
+          <td mat-cell *matCellDef="let element" style="width: 150px;">
+            <div *ngFor="let subject of element.subjects">
+              Semester: {{ subject.semester }}
+            </div>
+          </td>
+        </ng-container>
+    
+        <!-- Course ID Column -->
+        <ng-container matColumnDef="courseId">
+          <th mat-header-cell *matHeaderCellDef style="width: 150px;">Course ID</th>
+          <td mat-cell *matCellDef="let element" style="width: 150px;">
+            <div *ngFor="let subject of element.subjects">
+              Course ID: {{ subject.courseId }}
+            </div>
+          </td>
+        </ng-container>
+    
+        <!-- Seats Column -->
+        <ng-container matColumnDef="seats">
+          <th mat-header-cell *matHeaderCellDef style="width: 150px;">Seats</th>
+          <td mat-cell *matCellDef="let element" style="width: 150px;">
+            <div class="seats-container">
+              <div *ngFor="let seat of element.seats">
+                Block: {{ seat.blockId }}, Room: {{ seat.room }}, Seat: {{ seat.seat }}
+              </div>
+            </div>
+          </td>
+        </ng-container>
+    
+        <!-- Attendance Column -->
+        <ng-container matColumnDef="attendance">
+          <th mat-header-cell *matHeaderCellDef style="width: 150px;">Attendance</th>
+          <td mat-cell *matCellDef="let element" style="width: 150px; text-align: center;">
+            <mat-slide-toggle [(ngModel)]="element.attendance" (change)="markAttendance(element)">
+              {{ element.attendance ? 'Present' : 'Absent' }}
+            </mat-slide-toggle>
+          </td>
+        </ng-container>
+    
+        <!-- Header and Rows -->
+        <tr mat-header-row *matHeaderRowDef="displayedColumns3"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns3;"></tr>
+      </table>
+    </div>
+        
+    
+      
+
+</div>

@@ -1,0 +1,64 @@
+/* Style for the body and html to ensure full coverage */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden; /* Prevent scrollbars */
+}
+
+/* Video background container */
+video.bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1; /* Ensure it stays behind other elements */
+}
+
+/* Existing styles for the login container */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative; /* Ensures stacking above the video */
+  z-index: 1; /* Ensure it stays above the video */
+  height: 120vh !important;
+  background-image: url('https://images.unsplash.com/photo-1495465798138-718f86d1a4bc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') !important;
+  background-size: cover !important; /* Ensures the image covers the entire background */
+  background-position: center !important; /* Centers the image */
+  background-repeat: no-repeat !important; /* Prevents the image from repeating */
+  background-attachment: fixed !important; /* Keeps the image fixed while scrolling */
+  color: #333 !important; 
+}
+
+.login-card {
+  padding: 20px;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+   /* Slight transparency */
+  backdrop-filter: blur(10px); /* Frosted glass effect */
+}
+
+.full-width {
+  width: 100%;
+}
+
+.links {
+  margin-top: 10px;
+  text-align: center;
+}
+
+a {
+  color: rgb(157, 73, 36);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #1976d2;
+}

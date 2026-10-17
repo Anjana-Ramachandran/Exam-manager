@@ -1,0 +1,161 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    z-index: 1000;
+}
+
+body {
+    background: #e6f3ff;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.header {
+    background: #87CEEB;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: slideDown 0.5s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.header h1 {
+    color: white;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.nav-btn {
+    background: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.nav-btn:hover {
+    transform: scale(1.05);
+}
+
+.dashboard {
+    margin-top: 10rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h2 {
+    color: teal;
+    margin-bottom: 1rem;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-item h3 {
+    color: maroon;
+    font-size: 1.5rem;
+}
+
+.exam-list {
+    margin-top: 2rem;
+}
+
+.exam-item {
+    background: white;
+    padding: 1rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.exam-item:hover {
+    box-shadow: 0 4px 6px goldenrod ;
+}
+
+.status {
+    padding: 0.25rem 0.5rem;
+    border-radius: 15px;
+    font-size: 0.875rem;
+}
+
+.status.active {
+    background: #d9e9de;
+    color: green;
+}
+
+.status.completed {
+    background: #e6ffe6;
+    color: red;
+}
+
+h3{
+    color:olivedrab
+}
+  

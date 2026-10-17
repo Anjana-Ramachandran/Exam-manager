@@ -1,0 +1,22 @@
+<header>
+  <div class="logo">
+    <img 
+  src="https://img.freepik.com/premium-vector/yellow-circle-with-notepad-notepad-it_933463-23834.jpg" 
+  alt="Exam Management Logo" 
+  class="logo-image" 
+  (click)="navigateToHome()" />
+    <h4>Exam Management System</h4>
+  </div>
+  <nav class="nav">
+    <button class="nav-btn" *ngIf="!userName" (click)="navigateToLogin()">Login</button>
+    <button class="nav-btn" *ngIf="!userName" (click)="navigateToTimetable()" >Exams</button>
+    <!-- <button class="nav-btn" *ngIf="!userName" >Results</button>  -->
+    <button class="nav-btn" *ngIf="!userName" (click)="openNotifications()">Notifications</button>
+</nav>
+  <div class="logout" *ngIf="isLoggedIn$ | async">
+  <div style="font-weight: bold;" *ngIf="isLoggedIn$ | async">Logout</div>
+    <button mat-icon-button (click)="logout()">
+      <mat-icon title="Sign out">power_settings_new</mat-icon>
+    </button>
+  </div>
+</header>

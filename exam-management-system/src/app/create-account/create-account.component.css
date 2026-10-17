@@ -1,0 +1,36 @@
+.create-account-container {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  height: 120vh !important;
+  background-image: url('https://images.unsplash.com/photo-1495465798138-718f86d1a4bc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') !important;
+  background-size: cover !important; /* Ensures the image covers the entire background */
+  background-position: center !important; /* Centers the image */
+  background-repeat: no-repeat !important; /* Prevents the image from repeating */
+  background-attachment: fixed !important; /* Keeps the image fixed while scrolling */
+  color: #333 !important; /* Dark text color for readability */
+}
+
+  
+  .create-account-card {
+    padding: 20px;
+    max-width: 400px;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    background-color: #fff;
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+  
+  .invalid-input {
+    border-color: red;
+  }
+  
+  .error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+  }

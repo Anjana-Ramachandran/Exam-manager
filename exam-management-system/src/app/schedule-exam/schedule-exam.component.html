@@ -1,0 +1,108 @@
+<div class="exam-schedule-container">
+  <h2>Create Exam Time Table</h2>
+  
+  <div class="file-upload-container">
+    <input 
+      type="file" 
+      #fileInput 
+      (change)="onFileSelected($event)" 
+      accept=".csv" 
+      style="display: none"
+    >
+    <!-- <button 
+      mat-raised-button 
+      (click)="fileInput.click()"
+      class="file-upload-button"
+    >
+      Select File
+    </button> -->
+    <span class="file-name">{{ uploadedFileName }}</span>
+  </div>
+
+  <div *ngIf="uploadedTimeTable.length > 0 && uploadedFileName" class="preview-table">
+    <table mat-table [dataSource]="uploadedTimeTable" class="mat-elevation-z8">
+      <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
+        <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
+        <td mat-cell *matCellDef="let element">{{ element[column] }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <button 
+      mat-raised-button 
+      color="primary" 
+      (click)="submitExamSchedule()" 
+      [disabled]="loading"
+    >
+      Schedule Exam
+    </button>
+  </div>
+
+  <!-- <div> <h3>Exam Time Table</h3></div> -->
+
+  <div class="table-container">
+    <table mat-table [dataSource]="editedTimeTable" style="width:100%" class="mat-table custom-table mat-elevation-z8">
+      
+      <!-- Dynamic Column Definition -->
+      <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
+        <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
+        <td mat-cell *matCellDef="let element; let i = index">
+          
+          <!-- Editable Fields -->
+          <ng-container *ngIf="editMode; else readOnlyMode">
+            <!-- Date Picker for Exam Date -->
+            <mat-form-field *ngIf="column === 'examDate'" appearance="outline">
+              <input matInput [matDatepicker]="picker" [(ngModel)]="editedTimeTable[i].examDate">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+  
+            <!-- Time Pickers for Start/End Time -->
+            <mat-form-field *ngIf="column === 'startTime' || column === 'endTime'" appearance="outline">
+              <input matInput [ngxTimepicker]="timepicker" readonly [(ngModel)]="editedTimeTable[i][column]">
+              <ngx-material-timepicker-toggle matSuffix [for]="timepicker"></ngx-material-timepicker-toggle>
+              <ngx-material-timepicker #timepicker></ngx-material-timepicker>
+            </mat-form-field>
+  
+            <!-- Text Inputs for Other Fields -->
+            <mat-form-field *ngIf="column !== 'examDate' && column !== 'startTime' && column !== 'endTime'" appearance="outline">
+              <input matInput [(ngModel)]="editedTimeTable[i][column]">
+            </mat-form-field>
+          </ng-container>
+  
+          <!-- Read-Only Mode -->
+          <ng-template #readOnlyMode>
+            {{ element[column] }}
+          </ng-template>
+        </td>
+      </ng-container>
+  
+      <!-- Action Buttons -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let element; let i = index">
+          <button mat-icon-button color="warn" (click)="removeRow(i)" *ngIf="editMode">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns.concat(['actions'])"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns.concat(['actions']);"></tr>
+    </table>
+  
+    <!-- Edit, Save, Cancel, and Add Row Buttons -->
+    <div class="button-container">
+      <button mat-raised-button color="primary" *ngIf="!editMode" (click)="toggleEditMode()">Edit</button>
+      <button mat-raised-button color="accent" *ngIf="editMode" (click)="saveChanges()">Save</button>
+      <button mat-raised-button color="warn" *ngIf="editMode" (click)="cancelChanges()">Cancel</button>
+      <button mat-icon-button color="primary" *ngIf="editMode" (click)="addRow()">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </div>
+  
+
+</div>

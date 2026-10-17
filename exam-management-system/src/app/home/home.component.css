@@ -1,0 +1,113 @@
+.dashboard-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 10px 0;
+  color: #aa3007;
+  margin-top: 100px;
+}
+  .cards-container {
+    display: flex; /* Enables flexbox for layout */
+    gap: 0px; /* Adds space between the cards */
+    justify-content: start; /* Centers the cards horizontally */
+    align-items: flex-start; /* Aligns the cards vertically */
+    flex-wrap: wrap; /* Allows wrapping if there are more cards */
+  }
+.example-card {
+    max-width: 40%;
+    width:30%;
+    padding: 10px;
+    margin-top: 10px;
+    margin-left:10px ;
+    display: flex;
+    align-items: self-start;
+    justify-content: flex-start;
+  }
+.example-card1 {
+    max-width: 68%;
+    width: 30%;
+    padding: 10px;
+    margin-top: 10px;
+    margin-left: 10px ;
+    display: flex;
+    align-items: self-start;
+    justify-content: flex-start;
+  }
+  
+  .example-card-footer {
+    padding: 16px;
+  }
+
+  table {
+    width: 100%;
+    /* background-color: rgb(153, 203, 251); */
+    border: 1px solid black;
+  }
+  
+  .mat-mdc-form-field {
+    font-size: 14px;
+    width: 90%;
+  }
+  
+  td, th {
+    width: 25%;
+  }
+  mat-form-field
+  {
+background-color: white;
+  }
+
+
+  .custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  
+    th {
+      background: #c04a35; /* Professional blue shade */
+      color: white;
+      font-weight: bold;
+      text-align: left;
+      padding: 12px;
+      font-size: 14px;
+      text-transform: uppercase;
+    }
+  
+    td {
+      padding: 12px;
+      font-size: 14px;
+      color: #212121;
+    }
+  
+    tr:nth-child(even) {
+      background: #f9f9f9; /* Light grey for alternating rows */
+    }
+  
+    tr:hover {
+      background: #e3f2fd; /* Light blue on hover */
+      transition: background 0.3s ease-in-out;
+    }
+  }
+  
+  /* Container for table */
+  .table-container {
+    margin: 20px 0;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+  }
+  .background{
+  height: 99vh !important;
+  background-image: url('https://images.unsplash.com/photo-1495465798138-718f86d1a4bc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') !important;
+  background-size: cover !important; /* Ensures the image covers the entire background */
+  background-position: center !important; /* Centers the image */
+  background-repeat: no-repeat !important; /* Prevents the image from repeating */
+  background-attachment: fixed !important; /* Keeps the image fixed while scrolling */
+  color: #333 !important; 
+  }
+  
